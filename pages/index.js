@@ -45,7 +45,7 @@ Home.getInitialProps = async (ctx) => {
   try {
     const page = ctx.query.page ? ctx.query.page : 1;
     const posts = await axios.get(
-      "http://localhost:3000/api/post?page=" + page
+      "https://theresources.azurewebsites.net/api/post?page=" + page
     );
     return {
       posts: posts.data.posts,

@@ -72,7 +72,9 @@ export default function PostView({ post }) {
 PostView.getInitialProps = async (ctx) => {
   try {
     const id = ctx.query.id;
-    const post = await axios.get(`http://localhost:3000/api/post/${id}`);
+    const post = await axios.get(
+      `https://theresources.azurewebsites.net/api/post/${id}`
+    );
     return {
       post: post.data.post,
     };
