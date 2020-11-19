@@ -8,6 +8,7 @@ import {
 } from "semantic-ui-react";
 import axios from "axios";
 import Head from "next/head";
+import { baseUrl } from "../../utils/baseUrl";
 
 export default function PostView({ post }) {
   return (
@@ -72,9 +73,11 @@ export default function PostView({ post }) {
 PostView.getInitialProps = async (ctx) => {
   try {
     const id = ctx.query.id;
-    const post = await axios.get(
-      `https://theresources.azurewebsites.net/api/post/${id}`
-    );
+    console.log("hello2");
+    console.log(`${baseUrl}/${id}`);
+    const post = await axios.get(`${baseUrl}/${id}`);
+
+    console.log(post);
     return {
       post: post.data.post,
     };

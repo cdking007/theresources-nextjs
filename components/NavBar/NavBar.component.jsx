@@ -11,6 +11,11 @@ export default function NavBar() {
               <a> Home </a>
             </Link>
           </Menu.Item>
+          <Menu.Item>
+            <Link href="/auth/signup">
+              <a> Signup </a>
+            </Link>
+          </Menu.Item>
           <Menu.Menu position="right">
             <Menu.Item>
               <Input icon="search" placeholder="Search..." />

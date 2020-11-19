@@ -5,14 +5,13 @@ connectDb();
 
 export default async function PostById(req, res) {
   if (req.method !== "GET") {
-    return res
-      .status(400)
-      .send({
-        status: "fail",
-        message: `${req.method} method is not allowed!`,
-      });
+    return res.status(400).send({
+      status: "fail",
+      message: `${req.method} method is not allowed!`,
+    });
   }
   try {
+    console.log("hello");
     const post = await Post.findOne({ _id: req.query.id });
     if (post) {
       return res.status(200).send({ status: "success", post });
