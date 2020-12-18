@@ -70,20 +70,20 @@ export default function PostView({ post }) {
   );
 }
 
-PostView.getInitialProps = async (ctx) => {
+export async function getServerSideProps(ctx) {
   try {
     const id = ctx.query.id;
-    console.log("hello2");
-    console.log(`${baseUrl}/${id}`);
-    const post = await axios.get(`${baseUrl}/${id}`);
-
-    console.log(post);
+    const post = await axios.get(`${baseUrl}/api/post/${id}`);
     return {
-      post: post.data.post,
+      props: {
+        post: post.data.post,
+      }, // will be passed to the page component as props
     };
-  } catch (err) {
+  } catch (erorr) {
     return {
-      post: {},
+      props: {
+        post: {},
+      },
     };
   }
-};
+}

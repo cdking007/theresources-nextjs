@@ -42,20 +42,24 @@ const Home = ({ posts, totalPages, page }) => {
   );
 };
 
-Home.getInitialProps = async (ctx) => {
+export async function getServerSideProps(ctx) {
   try {
     const page = ctx.query.page ? ctx.query.page : 1;
     const posts = await axios.get(`${baseUrl}/api/post?page=${page}`);
     return {
-      posts: posts.data.posts,
-      totalPages: posts.data.totalPage,
-      page: page,
+      props: {
+        posts: posts.data.posts,
+        totalPages: posts.data.totalPage,
+        page: page,
+      }, // will be passed to the page component as props
     };
-  } catch (err) {
+  } catch (erorr) {
     return {
-      posts: [],
+      props: {
+        posts: [],
+      },
     };
   }
-};
+}
 
 export default Home;

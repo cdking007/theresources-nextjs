@@ -11,7 +11,6 @@ export default async function PostById(req, res) {
     });
   }
   try {
-    console.log("hello");
     const post = await Post.findOne({ _id: req.query.id });
     if (post) {
       return res.status(200).send({ status: "success", post });
